@@ -1,3 +1,6 @@
+/*
+算是二叉树层序遍历的一个变题，核心是需要一个额外的 queue
+*/
 class Solution {
 public:
     vector<double> averageOfLevels(TreeNode* root) {
