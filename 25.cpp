@@ -1,3 +1,7 @@
+/*
+本地为以 k 个 Node 为一组 reverse 每一组元素，不足 k 个的不 reverse 保持原样
+basic idea：链表转置基本可以考虑递归
+*/
 /**
  * Definition for singly-linked list.
  * struct ListNode {
