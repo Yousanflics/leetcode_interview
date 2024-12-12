@@ -24,7 +24,7 @@ public:
         if (target == 0) { res.push_back(cur); return; }
         // 跟 39 不一样的是对 candidates[i] 和 candidates[i-1]进行减枝
         for (int i = start; i < candidates.size(); ++i) {
-            // 从下标start + 1 开始，如果两个相邻直接 continue 跳过
+            // 只在同一层递归中生效即去重，如果两个相邻直接 continue 跳过
             if (i > start && candidates[i] == candidates[i - 1]) continue;
             // 把当前遍历的结果放进 cur 中记录起来
             cur.push_back(candidates[i]);
