@@ -16,6 +16,7 @@ public:
         for(int i = start; i < candidates.size(); i++) {
             cur.push_back(candidates[i]);
             dfs(candidates, target - candidates[i], i, cur, res);
+            // back tracking 中回溯到刚开始的状态否则会影响后面的状态
             cur.pop_back();
         }
     }
