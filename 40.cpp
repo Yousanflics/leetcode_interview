@@ -28,7 +28,7 @@ public:
             if (i > start && candidates[i] == candidates[i - 1]) continue;
             // 把当前遍历的结果放进 cur 中记录起来
             cur.push_back(candidates[i]);
-            // 跟 39 想通
+            // 跟 39 same
             dfs(candidates, target - candidates[i], i + 1, cur, res);
             // 回溯到最开始的起始状态方便后面的 push_back
             cur.pop_back();
