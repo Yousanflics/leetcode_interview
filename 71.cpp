@@ -16,6 +16,8 @@ public:
             if(i == path.size()) break;
             int start = i;
             while(path[i] != '/' && i < n) ++i;
+            //找到下一个 / 之前的元素
+            // 最后元素是 i - 1 因为这里是 ++i，上一个while的是就确定了下一次的元素
             int end = i - 1;
             string s = path.substr(start, end - start + 1);
             if(s == "..") {
@@ -23,8 +25,8 @@ public:
             } else if (s != ".") {// 对 != 的重载要求左右都是 string or const char *
                 dirs.push_back(s);
             }
-            for(string str : dirs) res += '/' + str;
-            return res.empty() ? "/" , res;
         }
+        for(string str : dirs) res += '/' + str;
+        return res.empty() ? "/" , res;
     }
 };
