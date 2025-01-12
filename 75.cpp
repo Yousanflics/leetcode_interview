@@ -24,3 +24,20 @@ public:
         }
     }
 };
+
+// One more solution
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int red = 0, blue = (int)nums.size() - 1;
+        for(int i = 0; i <= blue;) {
+            if(nums[i] == 0) {
+                swap(nums[i++], nums[red++]);
+            }else if(nums[i] == 2) {//nums[blue]可以是 0 也可以是 2 所以需要 -- 之后再次跟新的判断一下
+                swap(nums[i], nums[blue--]);
+            } else {
+                i++;
+            }
+        }
+    }
+};
