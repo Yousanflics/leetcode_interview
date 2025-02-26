@@ -12,6 +12,11 @@ Q：为什么 for loop 中需要 cur.pop_back() 因为递归的时候需要回�
 
 递归返回后，说明以 i 开头的所有情况已经处理完毕。此时需要将 i 从组合中移除（cur.pop_back()），以便后续循环尝试下一个数字（如 i+1）。
 
+
+方法 2：
+
+
+
 */
 class Solution {
 public:
@@ -33,5 +38,26 @@ public:
             dfs(n, k, i + 1, cur, res);
             cur.pop_back();
         }
+    }
+    // solution II
+    /*
+    思路如下: 
+    其实这个题目还有一个数学解决方法，排列组合的逻辑
+    C(n, k) = C(n-1, k-1) + C(n-1, k)
+    例如：
+    C(4, 2) = C(3, 1) + C(3, 2)
+    展开说说：C(3, 1) 的所有情况：[1], [2], [3]，还有 C(3, 2) 的所有情况：[1, 2], [1, 3], [2, 3]。可以发现二者加起来为6，正好是 C(4, 2) 的总数。仔细查看，C(3, 2)的所有情况包含在 C(4, 2) 之中，但是 C(3, 1) 的每种情况只有一个数字，而需要是 k=2 位，针对这种可以每一个都加上最后4，于是变成了：[1, 4], [2, 4], [3, 4]，加上 C(3, 2) 的所有情况：[1, 2], [1, 3], [2, 3]，正好就得到了 n=4, k=2 的所有情况了，具体代码实现如下：
+
+
+    cons: 耗时太长了
+    */
+    vector<vector<int>> combine(int n, int k) {
+        //两个if是递归的终止条件
+        if(k > n || k < 0) return {};
+        if(k == 0) return {{}};
+        vector<vector<int>> res = combine(n - 1, k - 1);
+        for(auto &a : res) a.push_back(n);
+        for(auto &a : combine(n - 1, k)) res.push_back(a);
+        return res;
     }
 };
