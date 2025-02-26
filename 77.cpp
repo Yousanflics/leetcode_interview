@@ -56,7 +56,9 @@ public:
         if(k > n || k < 0) return {};
         if(k == 0) return {{}};
         vector<vector<int>> res = combine(n - 1, k - 1);
+        //第一个循环的 &a：用于直接修改原数据，保证组合的正确生成。
         for(auto &a : res) a.push_back(n);
+        //第二个循环的 &a：用于避免拷贝临时对象的元素，提升性能
         for(auto &a : combine(n - 1, k)) res.push_back(a);
         return res;
     }
