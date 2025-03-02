@@ -1,4 +1,4 @@
-# 81
+# 81 runtime 最快的 solution
 # // 地板除 -> (5 / 2) = 2.5 (5 // 2) = 2
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
