@@ -7,7 +7,7 @@ class Solution:
             mid = l + (r-l) // 2
             if nums[mid] == target:
                 return True
-            # tricky part
+            # tricky part, 从左到右找到第一个不是相同的 element 然后再按照原来的对比，这是对数组中有相同的元素进行处理的 tricky 一点
             while l < mid and nums[l] == nums[mid]:
                 l += 1
             # the first half is ordered
