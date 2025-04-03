@@ -1,5 +1,7 @@
 # 82 删除排序链表中的重复元素
 # Definition for singly-linked list.
+from typing import Optional
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
