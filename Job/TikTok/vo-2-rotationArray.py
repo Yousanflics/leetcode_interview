@@ -16,9 +16,11 @@ def search(nums, target):
     while left <= right:
         mid = (left + right) // 2
 
+        # 找到的情况
         if nums[mid] == target:
             return mid
         
+        # 如果 mid 比 左边大
         if nums[mid] >= nums[left]:
             if nums[left] <= target < nums[mid]:
                 right = mid - 1
