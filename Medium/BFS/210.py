@@ -30,3 +30,62 @@ class Solution:
                 if in_degrees[des] == 0:
                     queue.append(des)
         return res if len(res) == numCourses else []
+    
+    def findOrderByDFS(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        # 构建邻接表
+        graph = defaultdict(list)
+        for des, src in prerequisites:
+            graph[src].append(des)
+        # 0 没有访问 1 正在访问 2 完成访问
+        visited = [0]* numCourses
+        res = []
+        # 检测环
+        def dfs(course):
+            if visited[course] == 1:
+                return False
+            if visited[course] == 2:
+                return True
+            
+            visited[course] = 1
+            for next in graph[course]:
+                if not dfs(next):
+                    return False
+
+            visited[course] = 2
+            res.append(course)
+            return True
+        for i in range(numCourses):
+            if visited[i] == 0:
+                if not dfs(i):
+                    return []
+        return res[::-1]
+    
+"""
+DFS 方法：
+
+构建图：
+
+创建邻接表表示课程之间的依赖关系
+
+
+DFS 过程：
+
+使用状态数组跟踪每个课程的访问状态（未访问/正在访问/已完成）
+对每个未访问的课程进行 DFS
+在 DFS 过程中，如果发现正在访问的课程被再次访问，说明存在环路
+在访问完一个课程的所有后续课程后，将该课程标记为已完成，并加入结果
+
+
+反转结果：
+
+由于 DFS 是后序遍历(post order)，需要将结果反转才能获得正确的学习顺序
+本质是因为 DFS 相当于是栈的操作流程所以需要后进的先出
+
+
+
+复杂度分析
+
+时间复杂度：O(V + E)，其中 V 是节点数（课程数），E 是边数（先修关系数）
+空间复杂度：O(V + E)，用于存储图和访问状态
+"""
+
