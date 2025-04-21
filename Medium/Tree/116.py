@@ -1,5 +1,6 @@
 
 from typing import Optional
+# 这里要注意 116 是一个完美二叉树跟 117 的前提是不一样的
 
 class TreeNode:
     def __init__(self, val):
