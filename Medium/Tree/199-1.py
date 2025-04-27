@@ -18,7 +18,7 @@ class Solution:
             if not node:
                 return
             if level == len(res):
-                res.append(node.val)
+                res.append(node)
             # 如果是 right 的话简答的修改这一部分就好了，换个顺序
             dfs(node.left, level+1)
             dfs(node.right, level+1)
