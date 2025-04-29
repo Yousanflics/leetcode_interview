@@ -1,3 +1,4 @@
+# Course Schedule
 # 这题的本质是一个有向图中是否存在环的算法，通常用于解决课程安排问题
 # graph: 构建领接表，表示图；关于图可以有领接表和领接矩阵两种方式一般稀疏矩阵用领接表会更高效一点
 
@@ -43,6 +44,7 @@ return True
 class Solution:
     def canFinish(self, numCourses, prerequisites):
         # 创建邻接表表示图（比邻接矩阵更高效）
+        # 对于稀疏图领接表会比邻接矩阵更高效更节省空间
         graph = [[] for _ in range(numCourses)]
         for dest, src in prerequisites:
             graph[src].append(dest)
