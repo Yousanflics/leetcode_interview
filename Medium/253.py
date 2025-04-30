@@ -24,14 +24,16 @@ class Solution:
         heapq.heappush(rooms, intervals[0][1])
         for i in range(1, len(intervals)):
             #后续开始的时间在之前结束的时间之后说明可以复用会议室，先弹出堆顶，然后将当前会议的结束时间加入堆中
+            # 每次把没有入栈的 interval 跟栈顶的对比（因为是最早结束的）
             if intervals[i][0] >= rooms[0]:
                 heapq.heappop(rooms)
             heapq.heappush(rooms, intervals[i][1])
         # 堆的大小就是需要的会议室数量
         return len(rooms)
-
-# 使用 heapq 把一个 list 初始化为一个最大堆
-# 使用 heapq 和 负值，
+    
+# 使用 heapq 构造最大堆 
+# num = [3, 1, 5, 7, 2], max_heap = [-num for num in nums]
+# heapq.heapify(max_heap), max_val = -heapq.heappop(max_heap)
 
 """
 
