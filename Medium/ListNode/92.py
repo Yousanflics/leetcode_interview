@@ -53,4 +53,20 @@ class Solution:
         pre.next = reverse
 
         return dummyNode.next
+    
+    def reverseBetweenRecur(self, head: ListNode, m: int, n: int) -> ListNode:
+        self.successor = None
+        if m == 1:
+            return self.reverseN(head, n)
+        head.next = self.reverseBetweenRecur(head.next, m-1, n-1)
+        return head
+    
+    def reverseN(self, head: ListNode, n: int) -> ListNode:
+        if n==1:
+            self.successor = head.next
+            return head
+        newHead = self.reverseN(head.next, n-1)
+        head.next.next = head
+        head.next = self.successor
+        return newHead
 
