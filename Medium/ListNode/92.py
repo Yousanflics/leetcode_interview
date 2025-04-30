@@ -6,6 +6,7 @@ class ListNode:
 
 class Solution:
     def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
+        # 区间为 0 都不需要转
         if m == n:
             return head
         # 声明虚拟头方便直接返回结果不用在遍历的时候搞错了
@@ -25,7 +26,8 @@ class Solution:
             cur.next = reverse
             reverse = cur
             cur = next
-
+        # cur 最后会到 n + 1 的位置
+        # reverse 是翻转之后的新头
         # 把翻转之后的链表对接到原来的接口处，reverse 是翻转之后的头指针，cur 是低 n + 1 个 node。pre 是第 m - 1 个 node
         """
         1 → 2 → 3 → 4 → 5 → 6
@@ -41,6 +43,7 @@ class Solution:
 
         """
         # 把 reverse 后的最后一个 node 连接到原来 node 剩下的 right part
+        # pre.next.next 是翻转之前的第一个需要翻转的 next 这里的 2.next 现在指向 cur 也就是 6
         pre.next.next = cur
         """
         pre 是 1
