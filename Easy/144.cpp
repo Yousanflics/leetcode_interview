@@ -8,7 +8,7 @@ public:
     vector<int> solve(TreeNode* root, vector<int>&ans) {
         if(root == nullptr) return ans;
         ans.push_back(root->value);
-        solve(root->letf, ans);
+        solve(root->left, ans);
         solve(root->right, ans);
         return ans;
     }
