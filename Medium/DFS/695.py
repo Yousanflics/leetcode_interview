@@ -10,7 +10,7 @@ from typing import List
 空间复杂度：O(mn)，最坏情况下，整个网格都是陆地，递归调用栈的深度将达到 mn。
 """
 
-    
+class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         if not grid or not grid[0]:
             return 0
