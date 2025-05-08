@@ -19,4 +19,5 @@ class Solution:
         a, b = 0, 1
         for _ in range(n):
             a, b = b, a + b
+        # 这里返回 b 本质就是返回 fib(n+1)
         return b
